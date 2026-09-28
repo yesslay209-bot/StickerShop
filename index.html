@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sticker Shop &mdash; Michigan / UChicago / UCI / UCLA</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="brand"><span class="logo">S</span><h1>Sticker Shop</h1></div>
+  <p class="sub">Choose your sticker</p>
+  <nav>
+    <button class="tab active" data-tab="shop">Shop</button>
+    <button class="tab" data-tab="owner">Owner</button>
+  </nav>
+</header>
+
+<main>
+  <section id="tab-shop">
+    <div class="grid-head">
+      <h2>Sticker collection</h2>
+    </div>
+    <div class="filters shop-filters" aria-label="Filter stickers">
+      <button class="chip active" data-school="all">All</button>
+      <button class="chip" data-school="Michigan">Michigan</button>
+      <button class="chip" data-school="UChicago">UChicago</button>
+      <button class="chip" data-school="UCI">UCI</button>
+      <button class="chip" data-school="UCLA">UCLA</button>
+    </div>
+    <div id="grid"></div>
+  </section>
+
+  <section id="tab-owner" hidden>
+    <div id="owner-login">
+      <label for="code">Owner passcode</label>
+      <input id="code" type="password" placeholder="passcode">
+      <button id="code-go">Unlock</button>
+      <p id="login-err" class="err" hidden>Wrong passcode.</p>
+    </div>
+
+    <div id="owner-panel" hidden>
+      <div class="panel-head">
+        <div>
+          <h2>Owner dashboard</h2>
+          <p class="panel-sub">Review purchase and trade requests</p>
+        </div>
+        <button class="btn tiny" id="refresh-requests">Refresh</button>
+      </div>
+      <div class="owner-stats">
+        <div class="stat"><strong id="stat-pending">0</strong><span>Pending</span></div>
+        <div class="stat"><strong id="stat-purchases">0</strong><span>Purchases</span></div>
+        <div class="stat"><strong id="stat-trades">0</strong><span>Trades</span></div>
+      </div>
+      <div class="request-filters">
+        <div class="filters">
+          <span class="chip" id="filter-all">All</span>
+          <span class="chip active" id="filter-pending">Pending</span>
+          <span class="chip" id="filter-approved">Approved</span>
+          <span class="chip" id="filter-declined">Declined</span>
+        </div>
+        <div class="filters">
+          <span class="chip active" id="kind-all">All types</span>
+          <span class="chip" id="kind-buy">Purchases</span>
+          <span class="chip" id="kind-trade">Trades</span>
+        </div>
+      </div>
+      <div id="requests"></div>
+      <p class="note small">Requests are saved in this browser only. A shared online inbox is needed to receive requests from other devices.</p>
+    </div>
+  </section>
+</main>
+
+<div id="sheet" hidden>
+  <div class="backdrop"></div>
+  <div class="card">
+    <button id="sheet-x">&times;</button>
+    <div id="sheet-art"></div>
+    <h2 id="sheet-name"></h2>
+    <p id="sheet-tag" class="tag"></p>
+
+    <div id="sheet-actions">
+      <button class="btn primary" data-do="buy">Buy &mdash; 2,000 Robux</button>
+      <button class="btn" data-do="trade">Offer a trade</button>
+    </div>
+
+    <form id="sheet-form" hidden>
+      <label for="f-1">Your Roblox username</label>
+      <input id="f-1" required placeholder="e.g. coolplayer123">
+      <label for="f-2" id="flabel2">Anything else? (optional)</label>
+      <textarea id="f-2" rows="3"></textarea>
+      <div class="row">
+        <button type="button" class="btn ghost" data-do="back">Back</button>
+        <button type="submit" class="btn primary">Send request</button>
+      </div>
+      <p class="small dim" id="form-note">Your request waits for the owner's approval before anything happens.</p>
+    </form>
+  </div>
+</div>
+
+<div id="toast" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>
